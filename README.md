@@ -26,3 +26,9 @@
 | X      | oTree  | Simultaneous Games, Live Method               |  TBA   |
 | XI     | oTree  | Deploying, Testing                            |  TBA   |
 | XII    | oTree  | Online Experiments Challenges                 |  TBA   |
+
+
+# Requirements on your machine
+- Python 3.8 or higher https://www.python.org/downloads/
+- Pip (should be automatically installed with Python)
+- Visual Studio code (https://code.visualstudio.com/download) or a text editor of your preference
