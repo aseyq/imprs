@@ -24,8 +24,8 @@
 |---------|--------|----------------------------------------------|--------|
 | IX      | oTree  | Advanced Pages and Templates, HTML, JS       |  TBA   |
 | X      | oTree  | Simultaneous Games, Live Method               |  TBA   |
-| XI     | oTree  | Deploying, Testing                            |  TBA   |
-| XII    | oTree  | Online Experiments Challenges                 |  TBA   |
+| XI     | oTree  | Deploying, ~~Testing and Bots~~               |  TBA   |
+| XII    | oTree  | Online Experiments: Challenges and Tips       |  TBA   |
 
 
 # Requirements on your machine
