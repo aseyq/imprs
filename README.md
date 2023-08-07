@@ -13,8 +13,8 @@
 # Day 2 - Tuesday, 8th August 2023
 | Session | Course | Subject                                      | Slides |
 |---------|--------|----------------------------------------------|--------|
-| V       | oTree  | Introduction, Structure, Individual Decisions |  TBA   |
-| VI      | oTree  | Group Decision Making, Homogenous Groups     |  TBA   |
+| V       | oTree  | Introduction, Structure, Individual Experiments |  TBA   |
+| VI      | oTree  | Group Experiments, Homogenous Groups     |  TBA   |
 | VII     | oTree  | Heterogeneous Groups                         |  TBA   |
 | VIII    | oTree  | Matching, Apps                               |  TBA   |
 
@@ -31,5 +31,5 @@
 # Requirements on your machine
 - Python 3.8 or higher https://www.python.org/downloads/
 - Pip (should be automatically installed with Python)
-- Visual Studio code (https://code.visualstudio.com/download) or a text editor of your preference
-- Also please get a Github account if you can.
+- Visual Studio Code (https://code.visualstudio.com/download) or a text editor of your preference
+- Also, please get a GitHub account if you can.
