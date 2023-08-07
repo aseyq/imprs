@@ -13,7 +13,7 @@
 # Day 2 - Tuesday, 8th August 2023
 | Session | Course | Subject                                      | Slides |
 |---------|--------|----------------------------------------------|--------|
-| V       | oTree  | Intoduction, Structure, Individual Decisions |  TBA   |
+| V       | oTree  | Introduction, Structure, Individual Decisions |  TBA   |
 | VI      | oTree  | Group Decision Making, Homogenous Groups     |  TBA   |
 | VII     | oTree  | Heterogeneous Groups                         |  TBA   |
 | VIII    | oTree  | Matching, Apps                               |  TBA   |
