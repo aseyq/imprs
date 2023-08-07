@@ -32,3 +32,4 @@
 - Python 3.8 or higher https://www.python.org/downloads/
 - Pip (should be automatically installed with Python)
 - Visual Studio code (https://code.visualstudio.com/download) or a text editor of your preference
+- Also please get a Github account if you can.
