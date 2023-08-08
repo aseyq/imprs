@@ -31,12 +31,12 @@
 # Assignment for Day 3 
 
 Take the Public Goods Game we used. Do the following:
-1- Set the number of rounds to 3
 
-2a- Add a Welcome page and add some welcome messages to it
+1. Set the number of rounds to 3
 
-2b- Make it visible only on the first page (hint: look at the documentation for `is_displayed`)
-3- Show the contributions of other players in the group (including or excluding myself)
+2. Add a Welcome page and add some welcome messages to it. Make it visible only on the first page (hint: look at the documentation for `is_displayed`)
+
+3. Show the contributions of other players in the group (including or excluding myself)
     Hint: 
     
   - Path 1: You can create a list of contributions and input it into the template. Then you need to check `vars_for_template` in the documentation.
