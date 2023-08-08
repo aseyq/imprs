@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="s6_otreeintro_files/libs/clipboard/clipboard.min.js"></script>
-<script src="s6_otreeintro_files/libs/quarto-html/tabby.min.js"></script>
-<script src="s6_otreeintro_files/libs/quarto-html/popper.min.js"></script>
-<script src="s6_otreeintro_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="s6_otreeintro_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="s6_otreeintro_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="s6_otreeintro_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="s6_otreeintro_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="s8_matching_files/libs/clipboard/clipboard.min.js"></script>
+<script src="s8_matching_files/libs/quarto-html/tabby.min.js"></script>
+<script src="s8_matching_files/libs/quarto-html/popper.min.js"></script>
+<script src="s8_matching_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="s8_matching_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="s8_matching_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="s8_matching_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="s8_matching_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Ali Seyhun Saral (Institute for Advanced Study in Toulouse)">
-  <meta name="dcterms.date" content="2023-08-07">
-  <title>Python + oTree Crash Course</title>
+  <meta name="dcterms.date" content="2023-08-08">
+  <title>oTree Crash Course</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="s6_otreeintro_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="s6_otreeintro_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="s8_matching_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="s8_matching_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -61,47 +61,46 @@
       }
     pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
     div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
+      { color: #000000; background-color: #f8f8f8; }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
+    code span { color: #000000; } /* Normal */
+    code span.al { color: #ef2929; } /* Alert */
+    code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #c4a000; } /* Attribute */
+    code span.bn { color: #0000cf; } /* BaseN */
+    code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4e9a06; } /* Char */
+    code span.cn { color: #000000; } /* Constant */
+    code span.co { color: #8f5902; font-style: italic; } /* Comment */
+    code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+    code span.dt { color: #204a87; } /* DataType */
+    code span.dv { color: #0000cf; } /* DecVal */
+    code span.er { color: #a40000; font-weight: bold; } /* Error */
     code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    code span.fl { color: #0000cf; } /* Float */
+    code span.fu { color: #000000; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+    code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+    code span.ot { color: #8f5902; } /* Other */
+    code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+    code span.sc { color: #000000; } /* SpecialChar */
+    code span.ss { color: #4e9a06; } /* SpecialString */
+    code span.st { color: #4e9a06; } /* String */
+    code span.va { color: #000000; } /* Variable */
+    code span.vs { color: #4e9a06; } /* VerbatimString */
+    code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="s6_otreeintro_files/libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href="s8_matching_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="styles.css">
-  <link href="s6_otreeintro_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="s6_otreeintro_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="s6_otreeintro_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="s6_otreeintro_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="s8_matching_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="s8_matching_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="s8_matching_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="s8_matching_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
   .callout {
@@ -392,8 +391,8 @@
     <div class="slides">
 
 <section id="title-slide" data-background-image="images/fishmarket.jpg" data-background-size="cover" class="quarto-title-block center">
-  <h1 class="title">Python + oTree Crash Course</h1>
-  <p class="subtitle">Session II - Python Basics 2</p>
+  <h1 class="title">oTree Crash Course</h1>
+  <p class="subtitle">Session VIII - Matching</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -406,389 +405,261 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
     </div>
 </div>
 
-  <p class="date">2023-08-07</p>
+  <p class="date">2023-08-08</p>
 </section>
-<section id="about-otree" class="slide level2">
-<h2>About oTree</h2>
+<section id="multiple-rounds" class="slide level2">
+<h2>Multiple Rounds</h2>
 <ul>
-<li>oTree is a platform/software to run lab/online experiments.</li>
-<li>Participants interact with each other using their browsers</li>
-<li>oTree runs on a web server:
-<ul>
-<li>It runs on your computer for development</li>
-<li>It may run on a physical server</li>
-<li>It may run on a cloud server</li>
-</ul></li>
+<li>Built-in variable for multiple rounds.</li>
 </ul>
+<div class="sourceCode" id="cb1" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> C(BaseConstants):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    NAME_IN_URL <span class="op">=</span> <span class="st">'pgg'</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    PLAYERS_PER_GROUP <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    NUM_ROUNDS <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    ENDOWMENT <span class="op">=</span> cu(<span class="dv">1000</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    MULTIPLIER <span class="op">=</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
-<p><img data-src="2023-08-04-14-20-18.png" style="width:50.0%"></p>
-</div>
-</section>
-<section id="about-otree-2" class="slide level2">
-<h2>About oTree (2)</h2>
 <ul>
-<li>It essentially works as a “web-page”</li>
-<li>oTree handles necessary components like database, pages, urls, …</li>
-<li>Defines a specialized data structure for our needs
+<li>Each <code>player</code>, <code>group</code> and <code>subsession</code> will have the attribute <code>round_number</code>.
 <ul>
-<li>Players</li>
-<li>Groups</li>
-<li>Session</li>
+<li>Example: <code>player.round_number</code></li>
 </ul></li>
 </ul>
+</div>
+</section>
+<section id="variables-when-there-are-multiple-rounds" class="slide level2 smaller">
+<h2>Variables when there are multiple rounds</h2>
+<div class="center">
+<p><img data-src="images/rounds.png" style="width:40.0%"></p>
+</div>
+<ul>
+<li><p>For each round, there will be a separate <code>player</code> object for each participant and a <code>group</code> object for each group.</p></li>
+<li><p>For each participant, <code>participant</code> object connects players.</p></li>
+<li><p><code>player.variable_name</code> written in the previous rounds will not be accessible</p></li>
+</ul>
+</section>
+<section id="accessing-variables-when-there-are-multiple-rounds" class="slide level2">
+<h2>Accessing variables when there are multiple rounds</h2>
+<ul>
+<li><code>player.in_round(n)</code> brings the player object of a participant at a given round</li>
+</ul>
+<div class="sourceCode" id="cb2" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the player obj in the prev. round</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>previous_player <span class="op">=</span> player.in_round(player.round_number <span class="op">-</span> <span class="dv">1</span>) </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>previous_decision <span class="op">=</span> previous_player.decision</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="for-our-trust-game" class="slide level2">
+<h2>For our trust game</h2>
+<div class="sourceCode" id="cb3" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> vars_for_template(player):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>           <span class="cf">if</span> player.round_number <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>            previous_player <span class="op">=</span> player.in_round(player.round_number <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>            previous_sent_amount <span class="op">=</span> previous_player.group.sent_amount</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            previous_returned_amount <span class="op">=</span> previous_player.group.returned_amount</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="bu">dict</span>(prev_sent <span class="op">=</span> previous_sent_amount,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                        prev_return <span class="op">=</span> previous_returned_amount)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="other-methods-to-gather-objects-from-the-previous-round" class="slide level2">
+<h2>Other methods to gather objects from the previous round</h2>
+<div>
+<ul>
+<li class="fragment"><p><code>player.in_previous_rounds()</code>: Returns a list of all player objects of the same participant from the previous rounds</p></li>
+<li class="fragment"><p><code>player.in_all_rounds()</code>: Returns a list of all player objects of the same participant from the previous round + the current round</p></li>
+<li class="fragment"><p><code>player.in_rounds(m, n)</code> Returns a list of players of the same participants from rounds m to n.</p></li>
+<li class="fragment"><p><a href="https://otree.readthedocs.io/en/latest/rounds.html?highlight=round#passing-data-between-rounds-or-apps">link to documentation</a></p></li>
+</ul>
+</div>
+</section>
+<section id="matching-and-subsession-class" class="slide level2">
+<h2>Matching and Subsession Class</h2>
+<div>
+<ul>
+<li class="fragment">In oTree, groups are created when the session is created</li>
+<li class="fragment">This is handled by <code>subsession</code> class.</li>
+<li class="fragment">A built-in <code>subsession</code> function, <code>creating_session</code> can be created to monitor/modify this process.</li>
+<li class="fragment"><code>subsession.get_group_matrix()</code> shows the matching as a list of list.
+<ul>
+<li class="fragment">Each group is a list</li>
+<li class="fragment">Order represents id_in_group</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="matching-and-subsession-class-1" class="slide level2">
+<h2>Matching and Subsession Class</h2>
+<div class="sourceCode" id="cb4" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Add this code to anywhere in your __init__.py file. </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># (ideally under #FUNCTIONS section you've created)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> creating_session(subsession):</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(subsession.get_group_matrix())</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># OUTPUT</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># [[1, 2], [3, 4], [5, 6]]</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># [[1, 2], [3, 4], [5, 6]]</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># [[1, 2], [3, 4], [5, 6]]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="matching-in-multiple-round-games" class="slide level2">
+<h2>Matching in multiple round games</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>The default behavior: Roles (<code>id_in_group</code>) are fixed, groups are fixed.</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<div class="center">
+<p><img data-src="images/mtc_same_group_same_role.png" style="width:40.0%"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="random-group-random-role" class="slide level2">
+<h2>Random Group, Random Role</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>To shuffle groups and <code>id_in_group</code> in each round, you can use:</li>
+</ul>
+<div class="sourceCode" id="cb5" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> creating_session(subsession):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    subsession.group_randomly()</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:40%;">
+<div class="center">
+<p><img data-src="images/mtc_random_group_random_role.png" style="width:60.0%"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="random-group-random-role-1" class="slide level2">
+<h2>Random Group, Random Role</h2>
+<ul>
+<li>You can also condition the shuffling for specific rounds</li>
+</ul>
+<div class="sourceCode" id="cb6" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffle only in round 1 and 3, keep the grouping otherwise</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> creating_session(subsession):</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> subsession.round_number <span class="kw">in</span> [<span class="dv">1</span>,<span class="dv">3</span>]:</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        subsession.group_randomly()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        subsession.group_like_round(subsession.round_number <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">## GROUPS    </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># [[5, 2], [3, 6], [4, 1]]</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># [[5, 2], [3, 6], [4, 1]]</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># [[2, 4], [6, 5], [1, 3]]</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># [[2, 4], [6, 5], [1, 3]]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="random-group-same-role" class="slide level2">
+<h2>Random Group, Same Role</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li>If <code>group_randomly</code> takes the argument, <code>fixed_id_in_group=True</code>, then it would shuffle in a way that <code>id_in_group</code> will be same for each player.</li>
+</ul>
+<div class="sourceCode" id="cb7" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> creating_session(subsession):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    subsession.group_randomly(fixed_id_in_group<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:40%;">
+<div class="center">
+<p><img data-src="images/mtc_random_group_same_role.png" style="width:60.0%"></p>
+</div>
+</div>
+</div>
+</section>
+<section id="using-a-custom-matching-structure" class="slide level2">
+<h2>Using a custom matching structure</h2>
+<div class="sourceCode" id="cb8" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> creating_session(subsession):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    matching <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">3</span>], [<span class="dv">2</span>,<span class="dv">4</span>]]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    subsession.set_group_matrix(matching)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="grouping-by-arrival-time" class="slide level2">
+<h2>Grouping by arrival time</h2>
+<div>
+<ul>
+<li class="fragment">In online experiments, you often need to group participants as they arrive.</li>
+<li class="fragment"><code>group_by_arrival_time</code> is a built-in function that does this.</li>
+<li class="fragment">It is a <code>WaitPage</code> class attribute.</li>
+<li class="fragment">It works only if the page is a <code>WaitPage</code> and it is the first page of the app.</li>
+</ul>
+</div>
 <div class="fragment">
-<p><img data-src="2023-08-04-14-24-07.png" style="width:50.0%"></p>
+<div class="sourceCode" id="cb9" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">class</span> GroupingWait(WaitPage):</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    group_by_arrival_time <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  page_sequence <span class="op">=</span> [GroupingWait, ...]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="ways-to-build-your-experiment" class="slide level2">
-<h2>Ways to build your experiment</h2>
+<section id="multiple-apps" class="slide level2">
+<h2>Multiple Apps</h2>
 <ul>
-<li><p>Using a text editor</p></li>
-<li><p>oTree studio (https://www.otreehub.com/)</p></li>
+<li>One can add multiple apps. They will be shown in order.</li>
+</ul>
+<div class="sourceCode" id="cb10" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>SESSION_CONFIGS <span class="op">=</span> [</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">dict</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">'trust'</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        app_sequence<span class="op">=</span>[<span class="st">'consent'</span>, <span class="st">'trust'</span>, <span class="st">'timeout'</span>],</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        num_demo_participants<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        real_world_currency_per_point<span class="op">=</span> <span class="fl">0.25</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        participation_fee <span class="op">=</span> <span class="dv">3</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>In oTree You can stop at whatever page/app you’d like.</li>
 </ul>
 </section>
-<section id="what-do-you-need" class="slide level2">
-<h2>What do you need?</h2>
-<ul>
-<li>A Python 3 installation</li>
-<li>A text editor/IDE to develop Python
-<ul>
-<li>PyCharm</li>
-<li>Visual Studio Code</li>
-<li>RStudio</li>
-<li>Notepad++</li>
-<li>Even notepad</li>
-</ul></li>
-<li>A command-line interface</li>
-</ul>
-</section>
-<section id="components-of-an-otree-experiment" class="slide level2">
-<h2>Components of an oTree Experiment</h2>
+<section id="otree-structure-with-multiple-apps" class="slide level2">
+<h2>oTree Structure with Multiple Apps</h2>
 
-<img data-src="images/otree_components.png" class="r-stretch"></section>
-<section id="virtual-environments-in-python" class="slide level2">
-<h2>Virtual Environments in Python</h2>
+<img data-src="images/participant.png" style="width:70.0%" class="r-stretch"></section>
+<section id="carrying-data-between-apps" class="slide level2">
+<h2>Carrying Data Between Apps</h2>
 <ul>
-<li>A virtual environment is essentially a directory that contains:
-<ul>
-<li>Python installation</li>
-<li>A number of additional packages</li>
-</ul></li>
-<li>They provide <em>isolated</em> python development enviromens with different packages and dependencies.</li>
+<li>Accessing data from a participant’s previous app requires storing the data on the participant object.</li>
+<li>The participant object persists across apps and retains data.</li>
 </ul>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="images/venv1.png"></p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="images/venv2.png"></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>settings.py</strong></pre>
 </div>
+<div class="sourceCode" id="cb11" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>PARTICIPANT_FIELDS <span class="op">=</span> [<span class="st">"my_variable"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="sourceCode" id="cb12" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>participant.my_variable <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="otree-development-installation-structure" class="slide level2">
-<h2>oTree Development Installation Structure</h2>
-<p>(my suggestion)</p>
-<pre><code>ot
-├── oTree
-│   ├── app1
-│   ├── app2
-│   ├── ...
-└── venv</code></pre>
+<section id="timeouts" class="slide level2">
+<h2>Timeouts</h2>
 <ul>
-<li><code>ot</code>: A container folder</li>
-<li><code>oTree</code>: oTree software (project folder)</li>
-<li><code>venv</code>: Virtual Environment</li>
+<li>You can set timeouts for pages.</li>
+<li>By default, it would try to submit if there is a form, and proceed the participant in the next page.</li>
 </ul>
+<div class="sourceCode" id="cb13" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyPage(Page):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    timeout_seconds <span class="op">=</span> <span class="dv">60</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="otree-installation" class="title-slide slide level1 center">
-<h1>oTree Installation</h1>
-<ol type="1">
-<li>Create the parent folder <code>ot</code></li>
-</ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">mkdir</span> ot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" type="1">
-<li>Go to the folder</li>
-</ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">cd</span> ot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="3" type="1">
-<li>Create the virtual enviroment</li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv venv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="4" type="1">
-<li>Activate the virtual environment</li>
-</ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a># MacOS or Linux</span>
-<span id="cb5-2"><a href="#cb5-2"></a>source venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {bash} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a># Windows</span>
-<span id="cb6-2"><a href="#cb6-2"></a>venv\Scripts\activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-
-<section>
-<section id="otree-installation-1" class="title-slide slide level1 center">
-<h1>oTree Installation</h1>
-<div class="columns">
-<div class="column">
-<ol start="5" type="1">
-<li>Install <code>otree</code> Package</li>
-</ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="ex">pip</span> install otree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="6" type="1">
-<li>Create an oTree project</li>
-</ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">otree</span> startproject oTree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="7" type="1">
-<li>Go to oTree folder</li>
-</ol>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="bu">cd</span> oTree</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="8" type="1">
-<li>Check if oTree is can be startd</li>
-</ol>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="ex">otree</span> devserver</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<pre><code>~/ot/oTree&gt; otree devserver
-Open your browser to http://localhost:8000/
-To quit the server, press Control+C.</code></pre>
-</div>
-</div>
-</section>
-<section id="command-line-mini-cheatsheet" class="slide level2">
-<h2>Command Line Mini Cheatsheet</h2>
-<table>
-<colgroup>
-<col style="width: 32%">
-<col style="width: 31%">
-<col style="width: 35%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Command</th>
-<th>Windows</th>
-<th>MacOS/Linux</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>print current location</td>
-<td><code>pwd</code></td>
-<td><code>cd</code></td>
-</tr>
-<tr class="even">
-<td>list files here</td>
-<td><code>dir</code></td>
-<td><code>ls</code></td>
-</tr>
-<tr class="odd">
-<td>go to directory</td>
-<td><code>cd NAME</code></td>
-<td><code>cd NAME</code></td>
-</tr>
-<tr class="even">
-<td>create directory</td>
-<td><code>mkdir NAME</code></td>
-<td><code>mkdir NAME</code></td>
-</tr>
-<tr class="odd">
-<td>delete file</td>
-<td><code>del filename</code></td>
-<td><code>rm filename</code></td>
-</tr>
-<tr class="even">
-<td>activate virtual env.</td>
-<td><code>PATH\Scripts\activate</code></td>
-<td><code>source PATH\bin\activate</code></td>
-</tr>
-<tr class="odd">
-<td>deactivate virtual env.</td>
-<td><code>deactivate</code></td>
-<td><code>deactivate</code></td>
-</tr>
-<tr class="even">
-<td>run oTree server (dev.)</td>
-<td><code>otree devserver</code></td>
-<td><code>otree devserver</code></td>
-</tr>
-<tr class="odd">
-<td>create app</td>
-<td><code>otree startapp APPNAME</code></td>
-<td><code>otree startapp APPNAME</code></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="otree-interface" class="slide level2">
-<h2>oTree Interface</h2>
-
-<img data-src="images/otree_interface.png" class="r-stretch"><ul>
-<li>Demo: A quick way to test experiments</li>
-<li>Sessions: To create and manage sessions</li>
-<li>Rooms: A tool to run experiments on specific links with specific participants</li>
-<li>Data: To download data (all together)</li>
-<li>Server check: Shows a summery of server configuration</li>
-</ul>
-</section>
-<section id="otree-file-structure" class="slide level2">
-<h2>oTree File Structure</h2>
-<div class="columns">
-<div class="column">
-<p><img data-src="images/otree_filestructure.png"></p>
-</div><div class="column">
+<section id="detecting-timeouts" class="slide level2">
+<h2>Detecting Timeouts</h2>
+<div>
 <ul>
-<li><code>settings.py</code>: oTree settings file</li>
-<li><code>my_survey</code> folder: the app in our oTree project. We apps on our own.
-<ul>
-<li><code>__init__.py</code>: Backend components (pages and models)</li>
-<li><code>*.html</code>: Frontend components (templates)</li>
-</ul></li>
+<li class="fragment"><code>before_next_page</code> is another special function defined in pages.</li>
+<li class="fragment">It triggers for each player some desired functions.</li>
+<li class="fragment">It will be supplied with two arguments, <code>player</code> object and <code>timeout_happend</code></li>
 </ul>
 </div>
-</div>
 </section>
-<section id="what-is-an-app" class="slide level2">
-<h2>What is an app?</h2>
-<ul>
-<li>App is the basic unit of an experiment.</li>
-<li>Each experiment should consist at least one app.</li>
-<li>Each app has its own:
-<ul>
-<li>Pages</li>
-<li>Fields/data structure for participant</li>
-<li>Other components like images, csv files etc.</li>
-<li>…</li>
-</ul></li>
-</ul>
-
-<img data-src="images/single_app.png" class="r-stretch"></section>
-<section id="what-is-an-app-1" class="slide level2">
-<h2>What is an app?</h2>
-<ul>
-<li>Experiments may contain more than one app</li>
-</ul>
-
-<img data-src="images/multiple_apps.png" class="r-stretch"></section>
-<section id="create-and-register-an-app" class="slide level2">
-<h2>Create and register an app</h2>
-<ul>
-<li><p>Make sure you have your virtual environment activated</p></li>
-<li><p>Make sure you are in the <code>oTree</code> (project) folder</p></li>
-<li><p>Create the app</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="ex">otree</span> startapp APPNAME</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>In our case we will use the name <code>my_survey</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="ex">otree</span> startapp my_survey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-</section>
-<section id="register-the-app-in-the-project" class="slide level2">
-<h2>Register the app in the project</h2>
-<ul>
-<li><p>Go to <code>settings.py</code></p></li>
-<li><p>Modify <code>SESSION_CONFIGS</code> as below</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>SESSION_CONFIGS <span class="op">=</span> [</span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="bu">dict</span>(</span>
-<span id="cb14-3"><a href="#cb14-3"></a>    name<span class="op">=</span><span class="st">'my_survey'</span>,</span>
-<span id="cb14-4"><a href="#cb14-4"></a>    app_sequence<span class="op">=</span>[<span class="st">'my_survey'</span>],</span>
-<span id="cb14-5"><a href="#cb14-5"></a>    num_demo_participants<span class="op">=</span><span class="dv">10</span>,</span>
-<span id="cb14-6"><a href="#cb14-6"></a>  ),</span>
-<span id="cb14-7"><a href="#cb14-7"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-</section>
-<section id="how-__init__.py-looks-like" class="slide level2">
-<h2>How <code>__init__.py</code> looks like?</h2>
-<div class="columns">
-<div class="column">
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">from</span> otree.api <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a></span>
-<span id="cb15-3"><a href="#cb15-3"></a></span>
-<span id="cb15-4"><a href="#cb15-4"></a>doc <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="st">Your app description</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="st">"""</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="kw">class</span> Constants(BaseConstants):</span>
-<span id="cb15-9"><a href="#cb15-9"></a>    name_in_url <span class="op">=</span> <span class="st">'newapp'</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a>    players_per_group <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb15-11"><a href="#cb15-11"></a>    num_rounds <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a></span>
-<span id="cb15-13"><a href="#cb15-13"></a></span>
-<span id="cb15-14"><a href="#cb15-14"></a><span class="kw">class</span> Subsession(BaseSubsession):</span>
-<span id="cb15-15"><a href="#cb15-15"></a>    <span class="cf">pass</span></span>
-<span id="cb15-16"><a href="#cb15-16"></a></span>
-<span id="cb15-17"><a href="#cb15-17"></a></span>
-<span id="cb15-18"><a href="#cb15-18"></a><span class="kw">class</span> Group(BaseGroup):</span>
-<span id="cb15-19"><a href="#cb15-19"></a>    <span class="cf">pass</span></span>
-<span id="cb15-20"><a href="#cb15-20"></a></span>
-<span id="cb15-21"><a href="#cb15-21"></a></span>
-<span id="cb15-22"><a href="#cb15-22"></a><span class="kw">class</span> Player(BasePlayer):</span>
-<span id="cb15-23"><a href="#cb15-23"></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># PAGES</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="kw">class</span> MyPage(Page):</span>
-<span id="cb16-3"><a href="#cb16-3"></a>    <span class="cf">pass</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a></span>
-<span id="cb16-5"><a href="#cb16-5"></a></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="kw">class</span> ResultsWaitPage(WaitPage):</span>
-<span id="cb16-7"><a href="#cb16-7"></a>    <span class="cf">pass</span></span>
-<span id="cb16-8"><a href="#cb16-8"></a></span>
-<span id="cb16-9"><a href="#cb16-9"></a></span>
-<span id="cb16-10"><a href="#cb16-10"></a><span class="kw">class</span> Results(Page):</span>
-<span id="cb16-11"><a href="#cb16-11"></a>    <span class="cf">pass</span></span>
-<span id="cb16-12"><a href="#cb16-12"></a></span>
-<span id="cb16-13"><a href="#cb16-13"></a></span>
-<span id="cb16-14"><a href="#cb16-14"></a>page_sequence <span class="op">=</span> [MyPage,</span>
-<span id="cb16-15"><a href="#cb16-15"></a>                 ResultsWaitPage,</span>
-<span id="cb16-16"><a href="#cb16-16"></a>                Results]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="anatomy-of-an-init-file" class="slide level2">
-<h2>Anatomy of an init file</h2>
-<div class="columns">
-<div class="column">
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">from</span> otree.api <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3"></a></span>
-<span id="cb17-4"><a href="#cb17-4"></a>doc <span class="op">=</span> <span class="st">"""</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="st">Your app description</span></span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="st">"""</span></span>
-<span id="cb17-7"><a href="#cb17-7"></a></span>
-<span id="cb17-8"><a href="#cb17-8"></a><span class="kw">class</span> Constants(BaseConstants):</span>
-<span id="cb17-9"><a href="#cb17-9"></a>    name_in_url <span class="op">=</span> <span class="st">'newapp'</span></span>
-<span id="cb17-10"><a href="#cb17-10"></a>    players_per_group <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb17-11"><a href="#cb17-11"></a>    num_rounds <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb17-12"><a href="#cb17-12"></a></span>
-<span id="cb17-13"><a href="#cb17-13"></a></span>
-<span id="cb17-14"><a href="#cb17-14"></a><span class="kw">class</span> Subsession(BaseSubsession):</span>
-<span id="cb17-15"><a href="#cb17-15"></a>    <span class="cf">pass</span></span>
-<span id="cb17-16"><a href="#cb17-16"></a></span>
-<span id="cb17-17"><a href="#cb17-17"></a></span>
-<span id="cb17-18"><a href="#cb17-18"></a><span class="kw">class</span> Group(BaseGroup):</span>
-<span id="cb17-19"><a href="#cb17-19"></a>    <span class="cf">pass</span></span>
-<span id="cb17-20"><a href="#cb17-20"></a></span>
-<span id="cb17-21"><a href="#cb17-21"></a></span>
-<span id="cb17-22"><a href="#cb17-22"></a><span class="kw">class</span> Player(BasePlayer):</span>
-<span id="cb17-23"><a href="#cb17-23"></a>    <span class="cf">pass</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div><div class="column">
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># PAGES</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="kw">class</span> MyPage(Page):</span>
-<span id="cb18-3"><a href="#cb18-3"></a>    <span class="cf">pass</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a></span>
-<span id="cb18-5"><a href="#cb18-5"></a></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="kw">class</span> ResultsWaitPage(WaitPage):</span>
-<span id="cb18-7"><a href="#cb18-7"></a>    <span class="cf">pass</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a></span>
-<span id="cb18-9"><a href="#cb18-9"></a></span>
-<span id="cb18-10"><a href="#cb18-10"></a><span class="kw">class</span> Results(Page):</span>
-<span id="cb18-11"><a href="#cb18-11"></a>    <span class="cf">pass</span></span>
-<span id="cb18-12"><a href="#cb18-12"></a></span>
-<span id="cb18-13"><a href="#cb18-13"></a></span>
-<span id="cb18-14"><a href="#cb18-14"></a>page_sequence <span class="op">=</span> [MyPage,</span>
-<span id="cb18-15"><a href="#cb18-15"></a>                 ResultsWaitPage,</span>
-<span id="cb18-16"><a href="#cb18-16"></a>                Results]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="otree-structure" class="slide level2">
-<h2>oTree Structure</h2>
-
-<img data-src="images/otree_structure.png" class="r-stretch"></section></section>
-<section id="individual-decisions" class="title-slide slide level1 center">
-<h1>Individual Decisions</h1>
+<section id="detecting-timeouts-1" class="slide level2">
+<h2>Detecting Timeouts</h2>
+<div class="sourceCode" id="cb14" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Consent(Page):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    timeout_seconds <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_next_page(player, timeout_happened):</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> timeout_happened:</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            player.timed_out <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> app_after_this_page(player, upcoming_apps):</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> player.timed_out:</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"timeout"</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_next_page(player, timeout_happened):</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> timeout_happened:</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            player.timed_out <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer footer-default">
 
 </div>
@@ -797,19 +668,19 @@ To quit the server, press Control+C.</code></pre>
   </div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="s6_otreeintro_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="s8_matching_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="s6_otreeintro_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="s6_otreeintro_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="s6_otreeintro_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="s6_otreeintro_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="s6_otreeintro_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="s8_matching_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="s8_matching_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="s8_matching_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="s8_matching_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="s8_matching_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="s6_otreeintro_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="s6_otreeintro_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="s6_otreeintro_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="s6_otreeintro_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="s8_matching_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="s8_matching_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="s8_matching_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="s8_matching_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -819,13 +690,13 @@ To quit the server, press Control+C.</code></pre>
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': true,
+'smaller': false,
  
         // Display controls in the bottom right corner
         controls: false,
