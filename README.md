@@ -13,10 +13,10 @@
 # Day 2 - Tuesday, 8th August 2023
 | Session | Course | Subject                                      | Slides |
 |---------|--------|----------------------------------------------|--------|
-| V       | oTree  | Introduction, Structure, Individual Experiments |  TBA   |
-| VI      | oTree  | Group Experiments, Homogenous Groups     |  TBA   |
-| VII     | oTree  | Heterogeneous Groups                         |  TBA   |
-| VIII    | oTree  | Matching, Apps                               |  TBA   |
+| V       | oTree  | Introduction, Structure, Individual Experiments |  [link](https://www.saral.it/imprs/slides/s5_otreeintro.html#/title-slide)|  |
+| VI      | oTree  | Group Experiments, Homogenous Groups     |  [link](https://www.saral.it/imprs/slides/s6_group.html#/title-slide)   |
+| VII     | oTree  | Heterogeneous Groups                         |  [link](https://www.saral.it/imprs/slides/s7_group2.html#/title-slide)  |
+| VIII    | oTree  | Matching, Apps                               |  [link](https://www.saral.it/imprs/slides/s8_matching.html#/title-slide)   |
 
 # Day 3 - Wednesday, 9th August 2023
 
