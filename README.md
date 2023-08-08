@@ -31,20 +31,17 @@
 # Assignment for Day 3 
 
 Take the Public Goods Game we used. Do the following:
-    1- Set the number of rounds to 3
+1- Set the number of rounds to 3
 
-    2a- Add a Welcome page and add some welcome message to it
-    2b- Make it visible only on the first page (hint: look at the documentation for `is_displayed`)
+2a- Add a Welcome page and add some welcome messages to it
 
-    3- Show the contributions of other players in in the group (including or excluding myself)
-
-    (Hint: 
+2b- Make it visible only on the first page (hint: look at the documentation for `is_displayed`)
+3- Show the contributions of other players in the group (including or excluding myself)
+    Hint: 
     
-    Path 1: You can create a list of contributions and input it into the template. Then you need to check `vars_for_template` in the documentation.
+    - Path 1: You can create a list of contributions and input it into the template. Then you need to check `vars_for_template` in the documentation.
     
-    Path 2: You can loop over the players in the group in the template. Check `{{ for p in group.get_players }}` in the documentation. This is the template version of group.get_players(). 
-
-    )
+    - Path 2: You can loop over the players in the group in the template. Check `{{ for p in group.get_players }}` in the documentation. This is the template version of group.get_players(). 
 
 # Requirements on your machine
 - Python 3.8 or higher https://www.python.org/downloads/
