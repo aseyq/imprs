@@ -43,6 +43,8 @@ Take the Public Goods Game we used. Do the following:
     
   - Path 2: You can loop over the players in the group in the template. Check `{{ for p in group.get_players }}` in the documentation. This is the template version of group.get_players(). 
 
+oTree Documentation: https://otree.readthedocs.io/en/latest/
+
 # Requirements on your machine
 - Python 3.8 or higher https://www.python.org/downloads/
 - Pip (should be automatically installed with Python)
