@@ -14,18 +14,20 @@
 | Session | Course | Subject                                      | Slides |
 |---------|--------|----------------------------------------------|--------|
 | V       | oTree  | Introduction, Structure, Individual Experiments |  [link](https://www.saral.it/imprs/slides/s5_otreeintro.html#/title-slide)|  |
-| VI      | oTree  | Group Experiments, Homogenous Groups     |  [link](https://www.saral.it/imprs/slides/s6_group.html#/title-slide)   |
-| VII     | oTree  | Heterogeneous Groups                         |  [link](https://www.saral.it/imprs/slides/s7_group2.html#/title-slide)  |
-| VIII    | oTree  | Matching, Apps                               |  [link](https://www.saral.it/imprs/slides/s8_matching.html#/title-slide)   |
+| VI        |        |  cont'd |  |
+| VII      | oTree  | Group Experiments, Homogenous Groups     |  [link](https://www.saral.it/imprs/slides/s6_group.html#/title-slide)   |
+| VIII        |        |  cont'd |  |
 
 # Day 3 - Wednesday, 9th August 2023
 
 | Session | Course | Subject                                      | Slides |
 |---------|--------|----------------------------------------------|--------|
-| IX      | oTree  | Advanced Pages and Templates, HTML, JS       |  TBA   |
-| X      | oTree  | Simultaneous Games, Live Method               |  TBA   |
+| IX     | oTree  | Heterogeneous Groups                         |  [link](https://www.saral.it/imprs/slides/s7_group2.html#/title-slide)  |
+| IX    | oTree  | Matching, Apps                               |  [link](https://www.saral.it/imprs/slides/s8_matching.html#/title-slide)   |
+| X      | oTree  | Advanced Pages and Templates HTML JS       |  [link](https://www.saral.it/imprs/slides/s9_html_css.html#/title-slide)  |
+| X      | oTree  | Simultaneous Games, Live Method               | [link](https://www.saral.it/imprs/slides/s10_real_time.html#/title-slide)  |
 | XI     | oTree  | Deploying, ~~Testing and Bots~~               |  TBA   |
-| XII    | oTree  | Online Experiments: Challenges and Tips       |  TBA   |
+| XII    | oTree  | Online Experiments: Challenges and Tips       |  [link](https://www.saral.it/imprs/slides/s12_onlineexperiments.html#/title-slide)   |
 
 
 # Assignment for Day 3 
