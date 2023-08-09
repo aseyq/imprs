@@ -1,0 +1,28 @@
+{{ block title }}
+    Results
+{{ endblock }}
+
+{{ block content }}
+    Your payoff is {{ player.payoff }}
+
+    {{ if player.id_in_group == 1 }}
+    <ul>
+          <li> You had {{ C.ENDOWMENT }} </li>
+          <li> You sent Player B {{ group.sent }}.</li>
+          <li> Player B returned {{ group.returned }}. </li>
+      </ul>
+      </p>
+    {{ else }}
+          <p>
+          <ul>
+              <li>Player A sent you {{ group.sent }}. </li>
+              <li>You returned {{ group.returned }}. </li>
+
+          </ul>
+          </p>
+  {{ endif }}
+
+    {{ next_button }}
+{{ endblock }}
+
+

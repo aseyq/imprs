@@ -1,0 +1,13 @@
+{{ block title }}
+    Player 1
+{{ endblock }}
+{{ block content }}
+
+    You have {{ C.ENDOWMENT }}.
+
+    You can send some of the amount to P2. The amount you send will be multiplied by {{ C.MULTIPLIER }}.
+
+    {{ formfields }}
+    {{ next_button }}
+
+{{ endblock }}
