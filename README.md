@@ -26,7 +26,7 @@
 | IX    | oTree  | Matching, Apps                               |  [link](https://www.saral.it/imprs/slides/s8_matching.html#/title-slide)   |
 | X      | oTree  | Advanced Pages and Templates HTML JS       |  [link](https://www.saral.it/imprs/slides/s9_html_css.html#/title-slide)  |
 | X      | oTree  | Simultaneous Games, Live Method               | [link](https://www.saral.it/imprs/slides/s10_real_time.html#/title-slide)  |
-| XI     | oTree  | Deploying, ~~Testing and Bots~~               |  TBA   |
+| XI     | oTree  | Deploying, ~~Testing and Bots~~               |  Demo   |
 | XII    | oTree  | Online Experiments: Challenges and Tips       |  [link](https://www.saral.it/imprs/slides/s12_onlineexperiments.html#/title-slide)   |
 
 
