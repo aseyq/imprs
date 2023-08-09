@@ -196,7 +196,7 @@ SESSION_CONFIGS = [
 | `Results`             | Results screen    |
 
 
-## Fields
+## Fields {.smaller}
 
 | Variable       | Model         | Type              |                              |
 | -------------- | ------------- | ----------------- | ---------------------------- |
@@ -204,14 +204,14 @@ SESSION_CONFIGS = [
 | `ENDOWMENT`    | `C` Constants | Currency (`cu`)   | Initial endowment            |
 | `MULTIPLIER`   | `C` C         | Integer           | Multiplier for contributions |
 
-## Group Fields
+## Group Fields {.smaller}
 
 - We should think of group fields as the variables that are the same for all players in the group.
 
 - `total_contribution`
 - `individual_share` (not strictly necessary but useful for a cleaner calculation)
 
-## Fields
+## Fields {.smaller}
 
 | Variable       | Model         | Type              |                              |
 | -------------- | ------------- | ----------------- | ---------------------------- |
@@ -240,6 +240,26 @@ SESSION_CONFIGS = [
 - We will use `group` to reach to players in the group.
 
 ## Let's write `set_payoffs`
+```{.python code-line-numbers=false}
+def set_payoffs(group):
+    print("my function set payoffs worked!")
+
+    players = group.get_players()
+
+    contributions = []
+
+    for p in players:
+        contributions.append(p.contribution)
+
+    group.total_contribution = sum(contributions)
+
+    group.individual_share = group.total_contribution * C.MULTIPLIER / C.PLAYERS_PER_GROUP
+
+    for p in players:
+        p.payoff = C.ENDOWMENT - p.contribution + group.individual_share
+
+```
+
 
 
 
@@ -249,19 +269,23 @@ SESSION_CONFIGS = [
 - This time we will trigger it from `ResultsWaitPage`.
 
 ## Triggering `set_payoffs` in a WaitPage
+
 Option 1: Define a function and give the function name to `after_all_players_arrive` attribute.
 
 ```{.python}
 class ResultsWaitPage(WaitPage):
-  def after_all_players_arrive(group):
-        do_something(group)
+    
+    def after_all_players_arrive(group):
+        set_payoffs(group)
+
+
 ```
 
 Option 2: Just give the function name to `after_all_players_arrive` variable.
 
 ```{.python}
 class ResultsWaitPage(WaitPage):
-  after_all_players_arrive = do_something
+  after_all_players_arrive = set_payoffs
 ```
 
 ## Lets set the trigger in our ResultsWaitPage
@@ -283,15 +307,67 @@ class ResultsWaitPage(WaitPage):
 
 ## Let's write our templates
 
+```{.html filename="Contribution.html"}
+{{ block title }}
+    Please decide on your contribution
+{{ endblock }}
+{{ block content }}
+
+    Round: {{ player.round_number }}
+
+    {{ formfields }}
+
+    {{ next_button }}
+
+{{ endblock }}
+```
+
+## Let's write our templates
+```{.html filename="Results.html"}
+{{ block title }}
+    Results
+{{ endblock }}
+
+
+{{ block content }}
+    <p> You contributed {{ player.contribution }} </p>
+    <p> The total contribution was {{ group.total_contribution }} </p>
+    <p> Each person got {{ group.individual_share }} from the group project </p>
+    <p> And your final payoff was {{ player.payoff }} </p>
+
+    {{ next_button }}
+{{ endblock }}
+```
+
 
 ## Practice 
 - Create a new page called "Welcome" at the beginning of the game
 - Set the title to "Welcome" and write a welcome message
 
-Remember: Steps to create a new page
-1. Create a new class that inherits from `Page`: `Welcome(Page)`
-2. Create a template file Welcome.html
-3. Add the page to `page_sequence`
+Remember: Steps to create a new page:
+
+- Create a new class that inherits from `Page`: `Welcome(Page)`
+- Create a template file Welcome.html
+- Add the page to `page_sequence`
+
+
+## Assignment {.smaller}
+Take the Public Goods Game we used. Do the following:
+
+- Set the number of rounds to 3
+
+- Add a Welcome page and add some welcome messages to it. Make it visible only on the first page (hint: look at the documentation for is_displayed)
+
+
+## Assignment (.contd)
+
+- Show the contributions of other players in the group (including or excluding myself) Hint:
+
+  - Path 1: You can create a list of contributions and input it into the template. Then you need to check vars_for_template in the documentation.
+
+  - Path 2: You can loop over the players in the group in the template. Check {{ for p in group.get_players }} in the documentation. This is the template version of group.get_players().
+
+
 
 
 ## Dislaying pages conditionally
@@ -317,7 +393,6 @@ class ScaryPage(Page):
 - Starts from 1.
 
 ```{.python code-line-numbers=false}
-
 class Welcome(Page):
 
     def is_displayed(player):
@@ -325,7 +400,85 @@ class Welcome(Page):
     
 ```
 
-## Discussion and Assignment
+## Looping in templates
+
+- You can loop over some iterables in the templates. (Very limited)
+- One option is to loop over the players in the group.
+
+```{.python code-line-numbers=false}
+{{ for p in group.get_players }}
+    Player {{ p.id_in_group }} contributed {{ p.contribution }}.
+{{ endfor }}
+
+```
+
+```
+Player 1 contributed 10 points. Player 2 contributed 30 points. Player 3  contributed 40 points.
+```
+
+## Looping in templates
+
+- You can add a condition to note yourself.
+
+```{.python code-line-numbers=false}
+    {{ for p in group.get_players }}
+        {{ if p == player }}
+            You contributed {{ p.contribution }}.
+        {{ else }}
+            Player {{ p.id_in_group }} contributed {{ p.contribution }}.
+        {{ endif }}
+    {{ endfor }}
+```
+
+```
+Player 1 contributed 10 points. Player 2 contributed 30 points. You contributed 40 points.
+
+```
+
+## Template features
+
+* If you want to show a variable that are not in your fields, you can use a page function called `vars_for_template`
+
+```{.python code-line-numbers="false"}
+
+class Results(Page):
+    def vars_for_template(player):
+        return dict(
+            variable_to_show=432,
+        )
+```
+  
+* Then you can reach it in the template by:
+
+```
+{{ variable_to_show }}
+```
+
+## Template features
+
+```{.python code-line-numbers="false"}
+
+class Results(Page):
+    def vars_for_template(player):
+        other_players = player.get_others_in_group()
+        other_contributions = [p.contribution for p in other_players]
+
+        return dict(
+            other_contributions=other_contributions
+        )
+```
+  
+* Then you can reach it in the template by:
+
+```
+{{ other_contributions }}
+
+[ 10, 20 ]
+```
+
+
+
+## Discussion and Assignment{.smaller}
 
 Prisoners' Dilemma
 
@@ -338,7 +491,7 @@ Prisoners' Dilemma
 - How would you implement it in oTree? 
 - How would you design the payoff function?
 
-### Assignment (or class exrecise if we have some extra time)
+### Assignment 
 - Build a Prisoners' Dilemma game in oTree
-- Use the following payoff matrix
+- Use the payoff matrix above
 

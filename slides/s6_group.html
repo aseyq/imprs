@@ -648,7 +648,7 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 </tbody>
 </table>
 </section>
-<section id="fields" class="slide level2">
+<section id="fields" class="slide level2 smaller">
 <h2>Fields</h2>
 <table>
 <colgroup>
@@ -687,7 +687,7 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 </tbody>
 </table>
 </section>
-<section id="group-fields" class="slide level2">
+<section id="group-fields" class="slide level2 smaller">
 <h2>Group Fields</h2>
 <ul>
 <li><p>We should think of group fields as the variables that are the same for all players in the group.</p></li>
@@ -695,7 +695,7 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <li><p><code>individual_share</code> (not strictly necessary but useful for a cleaner calculation)</p></li>
 </ul>
 </section>
-<section id="fields-1" class="slide level2">
+<section id="fields-1" class="slide level2 smaller">
 <h2>Fields</h2>
 <table>
 <colgroup>
@@ -775,6 +775,22 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 </section>
 <section id="lets-write-set_payoffs" class="slide level2">
 <h2>Let’s write <code>set_payoffs</code></h2>
+<div class="sourceCode" id="cb6" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_payoffs(group):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"my function set payoffs worked!"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    players <span class="op">=</span> group.get_players()</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    contributions <span class="op">=</span> []</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> players:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        contributions.append(p.contribution)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    group.total_contribution <span class="op">=</span> <span class="bu">sum</span>(contributions)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    group.individual_share <span class="op">=</span> group.total_contribution <span class="op">*</span> C.MULTIPLIER <span class="op">/</span> C.PLAYERS_PER_GROUP</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> p <span class="kw">in</span> players:</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        p.payoff <span class="op">=</span> C.ENDOWMENT <span class="op">-</span> p.contribution <span class="op">+</span> group.individual_share</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="triggering-set_payoffs" class="slide level2">
 <h2>Triggering <code>set_payoffs</code></h2>
@@ -786,12 +802,14 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <section id="triggering-set_payoffs-in-a-waitpage" class="slide level2">
 <h2>Triggering <code>set_payoffs</code> in a WaitPage</h2>
 <p>Option 1: Define a function and give the function name to <code>after_all_players_arrive</code> attribute.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">class</span> ResultsWaitPage(WaitPage):</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="kw">def</span> after_all_players_arrive(group):</span>
-<span id="cb6-3"><a href="#cb6-3"></a>        do_something(group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Option 2: Just give the function name to <code>after_all_players_arrive</code> variable.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">class</span> ResultsWaitPage(WaitPage):</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  after_all_players_arrive <span class="op">=</span> do_something</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2"></a>    </span>
+<span id="cb7-3"><a href="#cb7-3"></a>    <span class="kw">def</span> after_all_players_arrive(group):</span>
+<span id="cb7-4"><a href="#cb7-4"></a>        set_payoffs(group)</span>
+<span id="cb7-5"><a href="#cb7-5"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Option 2: Just give the function name to <code>after_all_players_arrive</code> variable.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">class</span> ResultsWaitPage(WaitPage):</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  after_all_players_arrive <span class="op">=</span> set_payoffs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="lets-set-the-trigger-in-our-resultswaitpage" class="slide level2">
 <h2>Lets set the trigger in our ResultsWaitPage</h2>
@@ -809,6 +827,44 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 </section>
 <section id="lets-write-our-templates" class="slide level2">
 <h2>Let’s write our templates</h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Contribution.html</strong></pre>
+</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb10-1"><a href="#cb10-1"></a>{{ block title }}</span>
+<span id="cb10-2"><a href="#cb10-2"></a>    Please decide on your contribution</span>
+<span id="cb10-3"><a href="#cb10-3"></a>{{ endblock }}</span>
+<span id="cb10-4"><a href="#cb10-4"></a>{{ block content }}</span>
+<span id="cb10-5"><a href="#cb10-5"></a></span>
+<span id="cb10-6"><a href="#cb10-6"></a>    Round: {{ player.round_number }}</span>
+<span id="cb10-7"><a href="#cb10-7"></a></span>
+<span id="cb10-8"><a href="#cb10-8"></a>    {{ formfields }}</span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a>    {{ next_button }}</span>
+<span id="cb10-11"><a href="#cb10-11"></a></span>
+<span id="cb10-12"><a href="#cb10-12"></a>{{ endblock }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="lets-write-our-templates-1" class="slide level2">
+<h2>Let’s write our templates</h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Results.html</strong></pre>
+</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource html number-lines code-with-copy"><code class="sourceCode html"><span id="cb11-1"><a href="#cb11-1"></a>{{ block title }}</span>
+<span id="cb11-2"><a href="#cb11-2"></a>    Results</span>
+<span id="cb11-3"><a href="#cb11-3"></a>{{ endblock }}</span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a></span>
+<span id="cb11-6"><a href="#cb11-6"></a>{{ block content }}</span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="kw">&lt;p&gt;</span> You contributed {{ player.contribution }} <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>    <span class="kw">&lt;p&gt;</span> The total contribution was {{ group.total_contribution }} <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>    <span class="kw">&lt;p&gt;</span> Each person got {{ group.individual_share }} from the group project <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a>    <span class="kw">&lt;p&gt;</span> And your final payoff was {{ player.payoff }} <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a></span>
+<span id="cb11-12"><a href="#cb11-12"></a>    {{ next_button }}</span>
+<span id="cb11-13"><a href="#cb11-13"></a>{{ endblock }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="practice" class="slide level2">
 <h2>Practice</h2>
@@ -816,7 +872,30 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <li>Create a new page called “Welcome” at the beginning of the game</li>
 <li>Set the title to “Welcome” and write a welcome message</li>
 </ul>
-<p>Remember: Steps to create a new page 1. Create a new class that inherits from <code>Page</code>: <code>Welcome(Page)</code> 2. Create a template file Welcome.html 3. Add the page to <code>page_sequence</code></p>
+<p>Remember: Steps to create a new page:</p>
+<ul>
+<li>Create a new class that inherits from <code>Page</code>: <code>Welcome(Page)</code></li>
+<li>Create a template file Welcome.html</li>
+<li>Add the page to <code>page_sequence</code></li>
+</ul>
+</section>
+<section id="assignment" class="slide level2 smaller">
+<h2>Assignment</h2>
+<p>Take the Public Goods Game we used. Do the following:</p>
+<ul>
+<li><p>Set the number of rounds to 3</p></li>
+<li><p>Add a Welcome page and add some welcome messages to it. Make it visible only on the first page (hint: look at the documentation for is_displayed)</p></li>
+</ul>
+</section>
+<section id="assignment-.contd" class="slide level2">
+<h2>Assignment (.contd)</h2>
+<ul>
+<li><p>Show the contributions of other players in the group (including or excluding myself) Hint:</p>
+<ul>
+<li><p>Path 1: You can create a list of contributions and input it into the template. Then you need to check vars_for_template in the documentation.</p></li>
+<li><p>Path 2: You can loop over the players in the group in the template. Check {{ for p in group.get_players }} in the documentation. This is the template version of group.get_players().</p></li>
+</ul></li>
+</ul>
 </section>
 <section id="dislaying-pages-conditionally" class="slide level2">
 <h2>Dislaying pages conditionally</h2>
@@ -826,12 +905,12 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <li><p>If this method returns <code>True</code> for current player, the page is displayed. Otherwise, it will not.</p></li>
 <li><p>If there are any calculations triggered by page, they will be skipped as well.</p></li>
 </ul>
-<div class="sourceCode" id="cb9" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ScaryPage(Page):</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_displayed(player):</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> player.age <span class="op">&gt;</span> <span class="dv">18</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ScaryPage(Page):</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_displayed(player):</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> player.age <span class="op">&gt;</span> <span class="dv">18</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dislaying-pages-conditional-on-the-round-number" class="slide level2">
 <h2>Dislaying pages conditional on the round number</h2>
@@ -840,14 +919,73 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <li>Also available in <code>group</code> and <code>subsession</code>.</li>
 <li>Starts from 1.</li>
 </ul>
-<div class="sourceCode" id="cb10" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Welcome(Page):</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_displayed(player):</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> player.round_number <span class="op">==</span> <span class="dv">1</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Welcome(Page):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_displayed(player):</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> player.round_number <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="discussion-and-assignment" class="slide level2">
+<section id="looping-in-templates" class="slide level2">
+<h2>Looping in templates</h2>
+<ul>
+<li>You can loop over some iterables in the templates. (Very limited)</li>
+<li>One option is to loop over the players in the group.</li>
+</ul>
+<div class="sourceCode" id="cb14" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>{{ <span class="cf">for</span> p <span class="kw">in</span> group.get_players }}</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    Player {{ p.id_in_group }} contributed {{ p.contribution }}.</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>{{ endfor }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Player 1 contributed 10 points. Player 2 contributed 30 points. Player 3  contributed 40 points.</code></pre>
+</section>
+<section id="looping-in-templates-1" class="slide level2">
+<h2>Looping in templates</h2>
+<ul>
+<li>You can add a condition to note yourself.</li>
+</ul>
+<div class="sourceCode" id="cb16" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    {{ <span class="cf">for</span> p <span class="kw">in</span> group.get_players }}</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>        {{ <span class="cf">if</span> p <span class="op">==</span> player }}</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>            You contributed {{ p.contribution }}.</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        {{ <span class="cf">else</span> }}</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>            Player {{ p.id_in_group }} contributed {{ p.contribution }}.</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        {{ endif }}</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    {{ endfor }}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>Player 1 contributed 10 points. Player 2 contributed 30 points. You contributed 40 points.
+</code></pre>
+</section>
+<section id="template-features-1" class="slide level2">
+<h2>Template features</h2>
+<ul>
+<li>If you want to show a variable that are not in your fields, you can use a page function called <code>vars_for_template</code></li>
+</ul>
+<div class="sourceCode" id="cb18" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Results(Page):</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> vars_for_template(player):</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">dict</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>            variable_to_show<span class="op">=</span><span class="dv">432</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Then you can reach it in the template by:</li>
+</ul>
+<pre><code>{{ variable_to_show }}</code></pre>
+</section>
+<section id="template-features-2" class="slide level2">
+<h2>Template features</h2>
+<div class="sourceCode" id="cb20" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Results(Page):</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> vars_for_template(player):</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>        other_players <span class="op">=</span> player.get_others_in_group()</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        other_contributions <span class="op">=</span> [p.contribution <span class="cf">for</span> p <span class="kw">in</span> other_players]</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">dict</span>(</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>            other_contributions<span class="op">=</span>other_contributions</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Then you can reach it in the template by:</li>
+</ul>
+<pre><code>{{ other_contributions }}
+
+[ 10, 20 ]</code></pre>
+</section>
+<section id="discussion-and-assignment" class="slide level2 smaller">
 <h2>Discussion and Assignment</h2>
 <p>Prisoners’ Dilemma</p>
 <table>
@@ -876,10 +1014,10 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <li>How would you implement it in oTree?</li>
 <li>How would you design the payoff function?</li>
 </ul>
-<h3 id="assignment">Assignment</h3>
+<h3 id="assignment-1">Assignment</h3>
 <ul>
 <li>Build a Prisoners’ Dilemma game in oTree</li>
-<li>Use the following payoff matrix</li>
+<li>Use the payoff matrix above</li>
 </ul>
 <div class="footer footer-default">
 

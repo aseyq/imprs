@@ -35,10 +35,10 @@ title-slide-attributes:
 
 ## Where I've been 
 
-![](2023-08-03-15-17-47.png)
+![](images/2023-08-03-15-17-47.png)
 
 ## My research 
-![](2023-08-03-15-21-31.png)
+![](images/2023-08-03-15-21-31.png)
 
 
 ## Style of the course

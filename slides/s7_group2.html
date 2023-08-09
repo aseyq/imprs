@@ -392,7 +392,7 @@
 
 <section id="title-slide" data-background-image="images/fishmarket.jpg" data-background-size="cover" class="quarto-title-block center">
   <h1 class="title">oTree Crash Course</h1>
-  <p class="subtitle">Session VII - Group Decisions 2</p>
+  <p class="subtitle">Session IV - Group Decisions 2</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -407,22 +407,19 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 
   <p class="date">2023-08-08</p>
 </section>
-<section>
-<section id="recap" class="title-slide slide level1 center">
-<h1>Recap</h1>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<div>
 <ul>
-<li>We have covered group experiments where the individuals had the same role.</li>
-<li>We created <code>Player</code> fields for the individual level data and <code>Group</code> fields</li>
-<li>And as usual we created <code>Page</code> classes for each page we will see and add fields with <code>form_fields</code>. We created a template for each one.</li>
-<li>We created a <code>group</code> function to set payoffs and triggered it at the waiting page by setting <code>after_all_players_arrive</code> variable to the name of our function.</li>
-<li>Now we will see how the design changes when we have different roles.</li>
+<li class="fragment"><p>We covered group experiments where the individuals had the same role.</p></li>
+<li class="fragment"><p>We created <code>Player</code> fields for the individual level data and <code>Group</code> fields.</p></li>
+<li class="fragment"><p>We created a <code>group</code> function to <code>set payoffs</code> and triggered it at the waiting page by setting <code>after_all_players_arrive</code> method under our page class.</p></li>
+<li class="fragment"><p>Now we will see heterogenous groups where the individuals have different roles.</p></li>
 </ul>
+</div>
 </section>
-<section id="group-experiments-ii---heterogenous-groups" class="slide level2">
+<section id="group-experiments-ii---heterogenous-groups" class="slide level2 smaller">
 <h2>Group Experiments II - Heterogenous Groups</h2>
-<ul>
-<li>Some technical aspects differ from the individual experiments:</li>
-</ul>
 <table>
 <colgroup>
 <col style="width: 39%">
@@ -440,7 +437,7 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <tr class="odd">
 <td><strong>Pages</strong></td>
 <td>Everybody sees every page</td>
-<td>Some pages might be shown to specific groups only</td>
+<td>Some pages might be shown to specific participants only</td>
 </tr>
 <tr class="even">
 <td><strong>Variables / Calculations</strong></td>
@@ -450,23 +447,12 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 </tbody>
 </table>
 </section>
-<section id="heterogenous-groups" class="slide level2">
-<h2>Heterogenous Groups</h2>
-<ul>
-<li><p>In this section, we will focus on the case when the players have different roles.</p></li>
-<li><p>Games with heterogeneous agents have some unique aspects we need to handle:</p>
-<ul>
-<li>We should be able to identify each player in group in order to give them role-specific tasks object</li>
-<li>We should be able to show each player different screens.</li>
-</ul></li>
-</ul>
-</section>
 <section id="identifying-participants-in-a-group" class="slide level2">
 <h2>Identifying Participants in a Group</h2>
 <ul>
 <li>oTree already have a structure to deal with individuals roles in a group.</li>
-<li><code>player.id_in_group</code>: Each player gets an integer from 1 to n as their id</li>
-<li><img data-src="images/id_in_group.png"></li>
+<li><code>player.id_in_group</code>: Each player gets an integer from 1 to n as their id in group.</li>
+<li><img data-src="images/id_in_group.png" style="width:70.0%"></li>
 </ul>
 </section>
 <section id="default-behavior-id_in_group-in-otree" class="slide level2 smaller">
@@ -503,54 +489,31 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">#...</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="calling-players-by-id-group.get_player_by_id" class="slide level2">
-<h2>Calling players by id: <code>group.get_player_by_id()</code></h2>
-<ul>
-<li><p><code>get_player_by_id()</code> is a group method</p></li>
-<li><p>Takes a number from 1 to n to get the player object of the group member</p>
-<div class="sourceCode" id="cb2" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>trustor <span class="op">=</span> group.get_player_by_id(<span class="dv">1</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>trustee <span class="op">=</span> group.get_player_by_id(<span class="dv">2</span>)</span>
+<section id="we-can-loop-conditionally-based-on-the-id-of-the-player" class="slide level2">
+<h2>We can loop conditionally based on the id of the player</h2>
+<div class="sourceCode" id="cb2" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gets all the players and puts them in a list</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>players <span class="op">=</span> group.get_players()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>trustor.payoff <span class="op">=</span> endowment <span class="op">-</span> sent_amount <span class="op">+</span> returned amount</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> players:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> player.id_in_group <span class="op">==</span> <span class="dv">1</span>: <span class="co"># Trustor</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    do_something(p)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    p.some_attribute <span class="op">=</span> some_number</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> player.id_in_group <span class="op">==</span> <span class="dv">2</span>: <span class="co"># Trustee</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    do_something_else(p)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    p.some_attribute <span class="op">=</span> some_other_number</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">#...</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="calling-players-by-id-group.get_player_by_id-1" class="slide level2">
-<h2>Calling players by id: <code>group.get_player_by_id()</code></h2>
-<ul>
-<li>We can also add a condition in the loop</li>
-</ul>
-<div class="sourceCode" id="cb3" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gets all the players and puts them in a list</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>players <span class="op">=</span> group.get_players()</span>
+<section id="reaching-player-objects-by-id-group.get_player_by_id" class="slide level2">
+<h2>Reaching player objects by id: <code>group.get_player_by_id()</code></h2>
+<div class="sourceCode" id="cb3" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>trustor <span class="op">=</span> group.get_player_by_id(<span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>trustee <span class="op">=</span> group.get_player_by_id(<span class="dv">2</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> players:</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> player.id_in_group <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    do_something(p)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    p.some_attribute <span class="op">=</span> some_number</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> player.id_in_group <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    do_something_else(p)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    p.some_attribute <span class="op">=</span> some_other_number</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="calling-players-by-id-group.get_player_by_id-2" class="slide level2">
-<h2>Calling players by id: <code>group.get_player_by_id()</code></h2>
-<ul>
-<li>We can also add a condition in the loop</li>
-</ul>
-<div class="sourceCode" id="cb4" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gets all the players and puts them in a list</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>players <span class="op">=</span> group.get_players()</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> p <span class="kw">in</span> players:</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> player.id_in_group <span class="op">==</span> <span class="dv">1</span>: <span class="co"># Trustor</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    do_something(p)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    p.some_attribute <span class="op">=</span> some_number</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> player.id_in_group <span class="op">==</span> <span class="dv">2</span>: <span class="co"># Trustee</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    do_something_else(p)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    p.some_attribute <span class="op">=</span> some_other_number</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>trustor.payoff <span class="op">=</span> endowment <span class="op">-</span> sent_amount <span class="op">+</span> returned amount</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>trustee.payoff <span class="op">=</span> C.MULTIPLIER <span class="op">*</span> sent_amount <span class="op">-</span> returned_amount</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dislaying-pages-conditionally-for-different-roles" class="slide level2">
 <h2>Dislaying pages conditionally for different roles</h2>
@@ -558,12 +521,12 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <li><p>We already know how to display pages conditionally in different rounds.</p></li>
 <li><p>We can do the same for different roles (id_in_group) as well.</p></li>
 </ul>
-<div class="sourceCode" id="cb5" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PageForTrustor(Page):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_displayed(player):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> player.id_in_group <span class="op">==</span> <span class="dv">1</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section></section>
+<div class="sourceCode" id="cb4" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> PageForTrustor(Page):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> is_displayed(player):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> player.id_in_group <span class="op">==</span> <span class="dv">1</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section>
 <section id="now-lets-see-how-we-can-use-these-in-a-trust-game" class="title-slide slide level1 center">
 <h1>Now let’s see how we can use these in a Trust Game</h1>
@@ -577,11 +540,6 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <li>The amount sent is tripled by the experimenter.</li>
 <li>The trustee can send back any amount to the trustor.</li>
 </ul>
-</section></section>
-<section>
-<section id="building-a-public-goods-game" class="title-slide slide level1 center">
-<h1>Building a Public Goods Game</h1>
-
 </section>
 <section id="creating-a-new-app" class="slide level2">
 <h2>Creating a new app</h2>
@@ -593,15 +551,15 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <div class="code-with-filename-file">
 <pre><strong>settings.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>SESSION_CONFIGS <span class="op">=</span> [</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">dict</span>(</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">'trust'</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        app_sequence<span class="op">=</span>[<span class="st">'trust'</span>],</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        num_demo_participants<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>SESSION_CONFIGS <span class="op">=</span> [</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">dict</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">'trust'</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        app_sequence<span class="op">=</span>[<span class="st">'trust'</span>],</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        num_demo_participants<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="planning-pages" class="slide level2">
@@ -617,12 +575,12 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <tbody>
 <tr class="odd">
 <td>Send</td>
-<td>Send amount from P1 to P2</td>
+<td>Amount sent from P1 to P2</td>
 <td>P1</td>
 </tr>
 <tr class="even">
 <td>Return</td>
-<td>Return amount from P2 to P1</td>
+<td>Amount returned from P2 to P1</td>
 <td>P2</td>
 </tr>
 <tr class="odd">
@@ -637,10 +595,9 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <li>What about WaitPages?</li>
 </ul>
 </div>
-</section></section>
-<section>
-<section id="pages" class="title-slide slide level1 center">
-<h1>Pages</h1>
+</section>
+<section id="planning-pages-1" class="slide level2">
+<h2>Planning Pages</h2>
 <table>
 <thead>
 <tr class="header">
@@ -652,7 +609,7 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <tbody>
 <tr class="odd">
 <td>Send</td>
-<td>Send amount from P1 to P2</td>
+<td>Amount sent from P1 to P2</td>
 <td>P1</td>
 </tr>
 <tr class="even">
@@ -662,7 +619,7 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 </tr>
 <tr class="odd">
 <td>Return</td>
-<td>Return amount from P2 to P1</td>
+<td>Amount returned from P2 to P1</td>
 <td>P2</td>
 </tr>
 <tr class="even">
@@ -677,6 +634,16 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 </tr>
 </tbody>
 </table>
+</section>
+<section id="group-fields" class="slide level2">
+<h2>Group fields</h2>
+<ul>
+<li>We already know how to create group fields.</li>
+<li>We can also create forms for group fields.</li>
+</ul>
+<div class="sourceCode" id="cb6" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Send(Page):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    form_fields <span class="op">=</span> [<span class="st">'sent'</span>]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    form_model <span class="op">=</span> <span class="st">'group'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="game-parameters" class="slide level2 smaller">
 <h2>Game Parameters</h2>
@@ -715,13 +682,13 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <td></td>
 </tr>
 <tr class="even">
-<td>sent_amount</td>
+<td>sent</td>
 <td>The amount sent by P1 to P2</td>
 <td>Group</td>
 <td><strong>CurrencyField</strong></td>
 </tr>
 <tr class="odd">
-<td>returned_amount</td>
+<td>returned</td>
 <td>The amount sent back by P2 to P1</td>
 <td>Group</td>
 <td><strong>CurrencyField</strong></td>
@@ -754,8 +721,8 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    p1 <span class="op">=</span> group.get_player_by_id(<span class="dv">1</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    p2 <span class="op">=</span> group.get_player_by_id(<span class="dv">2</span>)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    p1.payoff <span class="op">=</span> C.ENDOWMENT <span class="op">-</span> group.sent_amount <span class="op">+</span> group.returned_amount</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    p2.payoff <span class="op">=</span> group.sent_amount <span class="op">*</span> C.MULTIPLIER <span class="op">-</span> group.returned_amount</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    p1.payoff <span class="op">=</span> C.ENDOWMENT <span class="op">-</span> group.sent <span class="op">+</span> group.returned</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    p2.payoff <span class="op">=</span> group.sent <span class="op">*</span> C.MULTIPLIER <span class="op">-</span> group.returned</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="using-experimental-currencies" class="slide level2">
@@ -769,7 +736,10 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 </div>
 <div class="sourceCode" id="cb8" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e.g. EUR, GBP, CNY, JPY</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>REAL_WORLD_CURRENCY_CODE <span class="op">=</span> <span class="st">'USD'</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>USE_POINTS <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>USE_POINTS <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">## this you should add manually</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>POINTS_CUSTOM_NAME <span class="op">=</span> <span class="st">'ECU'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="triggering-set_payoffs" class="slide level2">

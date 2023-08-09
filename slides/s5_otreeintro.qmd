@@ -29,7 +29,7 @@ title-slide-attributes:
 # oTree Introduction
 
 ## About oTree
-![](2023-08-07-20-03-58.png)
+![](images/2023-08-07-20-03-58.png)
 
 * oTree is a platform/software to run lab/online experiments.
 * Participants interact with each other using their browsers
@@ -40,7 +40,7 @@ title-slide-attributes:
 
 . . . 
 
-![](2023-08-04-14-20-18.png){width=50%}
+![](images/2023-08-04-14-20-18.png){width=50%}
 
 ## About oTree (2)
 * It essentially works as a "web-app"
@@ -52,7 +52,7 @@ title-slide-attributes:
 
 . . .
 
-![](2023-08-04-14-24-07.png){width=50%}
+![](images/2023-08-04-14-24-07.png){width=50%}
 
 ## Managing your experiment
 [link](https://interactive2.herokuapp.com)

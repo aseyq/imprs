@@ -1,9 +1,9 @@
 ---
 title: "oTree Crash Course"
-subtitle: Session VIII - Matching
+subtitle: Session X - Matching
 author: "Ali Seyhun Saral (Institute for Advanced Study in Toulouse)"
 institute: "IMPRS Be Smart Summer School"
-date: "8 August 2023"
+date: "9 August 2023"
 footer: ""
 execute:
   echo: true
@@ -22,7 +22,6 @@ title-slide-attributes:
   data-background-image: images/fishmarket.jpg
   data-background-size: cover
 ---
-
 
 ## Multiple Rounds
 * Built-in variable for multiple rounds.
@@ -46,7 +45,7 @@ class C(BaseConstants):
 
 ## Variables when there are multiple rounds {.smaller}
 :::{.center}
-![](images/rounds.png){width=40%}
+![](images/rounds.png){width=50%}
 :::
 
 * For each round, there will be a separate `player` object for each participant and a `group` object for each group.
@@ -280,12 +279,19 @@ class Consent(Page):
     def before_next_page(player, timeout_happened):
         if timeout_happened:
             player.timed_out = True
+```
 
-    def app_after_this_page(player, upcoming_apps):
-        if player.timed_out:
-            return "timeout"
+## Then you can send the participant to another app
+
+```{.python code-line-numbers=false}
+class Consent(Page):
+    timeout_seconds = 30
 
     def before_next_page(player, timeout_happened):
         if timeout_happened:
             player.timed_out = True
+
+    def app_after_this_page(player, upcoming_apps):
+        if player.timed_out:
+            return "timeout"
 ```

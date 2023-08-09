@@ -33,7 +33,7 @@ title-slide-attributes:
 
 . . . 
 
-![](2023-08-04-14-20-18.png){width=50%}
+![](images/2023-08-04-14-20-18.png){width=50%}
 
 ## About oTree (2)
 * It essentially works as a "web-page"
@@ -45,7 +45,7 @@ title-slide-attributes:
 
 . . .
 
-![](2023-08-04-14-24-07.png){width=50%}
+![](images/2023-08-04-14-24-07.png){width=50%}
 
 ## Ways to build your experiment
 

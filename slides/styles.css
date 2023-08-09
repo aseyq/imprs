@@ -63,3 +63,9 @@
     background-color: #fffcd8 !important;
   }
 
+
+  .stripped, th, td {
+      border-collapse: collapse !important;
+      border: #000000 solid 1px !important;
+  }
+  

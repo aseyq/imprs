@@ -1,6 +1,6 @@
 ---
 title: "oTree Crash Course"
-subtitle: Session VII - Group Decisions 2
+subtitle: Session IV - Group Decisions 2
 author: "Ali Seyhun Saral (Institute for Advanced Study in Toulouse)"
 institute: "IMPRS Be Smart Summer School"
 date: "8 August 2023"
@@ -22,38 +22,31 @@ title-slide-attributes:
   data-background-image: images/fishmarket.jpg
   data-background-size: cover
 ---
-# Recap
+## Recap
+:::{.incremental}
+* We covered group experiments where the individuals had the same role.
+  
+* We created `Player` fields for the individual level data and `Group` fields.
 
-* We have covered group experiments where the individuals had the same role.
-* We created `Player` fields for the individual level data and `Group` fields 
-* And as usual we created `Page` classes for each page we will see and add fields with `form_fields`. We created a template for each one.
-* We created a `group` function to set payoffs and triggered it at the waiting page by setting `after_all_players_arrive` variable to the name of our function.
-* Now we will see how the design changes when we have different roles.
+* We created a `group` function to `set payoffs` and triggered it at the waiting page by setting `after_all_players_arrive` method under our page class.
+  
+* Now we will see heterogenous groups where the individuals have different roles.
+:::
 
+## Group Experiments II - Heterogenous Groups {.smaller}
 
-## Group Experiments II - Heterogenous Groups
-
-* Some technical aspects differ from the individual experiments:
 
 | Aspect                     | Homogeneous Groups        | Heterogeneous Groups                                     |
 | -----------------          | ------------------     | --------                                             |
-| **Pages**                  | Everybody sees every page |  Some pages might be shown to specific groups only|
+| **Pages**                  | Everybody sees every page |  Some pages might be shown to specific participants only|
 | **Variables / Calculations** | Calculations are the same for everybody   | Role specific calculations might be necessary |
-
-## Heterogenous Groups
-- In this section, we will focus on the case when the players have different roles. 
-- Games with heterogeneous agents have some unique aspects we need to handle:
-
-  - We should be able to identify each player in group in order to give them role-specific tasks object
-  - We should be able to show each player different screens.
-
 
 ## Identifying Participants in a Group
 
 
 * oTree already have a structure to deal with individuals roles in a group.
-* `player.id_in_group`: Each player gets an integer from 1 to n as their id
-* ![](images/id_in_group.png)
+* `player.id_in_group`: Each player gets an integer from 1 to n as their id in group.
+* ![](images/id_in_group.png){width="70%"}
 
 ## Default behavior `id_in_group` in oTree {.smaller}
 
@@ -89,43 +82,7 @@ for p in players:
   
 ```
 
-## Calling players by id: `group.get_player_by_id()`
-
-* `get_player_by_id()` is a group method
-
-* Takes a number from 1 to n to get the player object of the group member 
-
-  ```{.python code-line-numbers="false"}
-  trustor = group.get_player_by_id(1)
-  trustee = group.get_player_by_id(2)
-  
-  trustor.payoff = endowment - sent_amount + returned amount
-  
-  ```
-
-## Calling players by id: `group.get_player_by_id()`
-
-* We can also add a condition in the loop
-
-```{.python code-line-numbers="false"}
-# Gets all the players and puts them in a list
-players = group.get_players()
-
-for p in players:
-
-  if player.id_in_group == 1:
-    do_something(p)
-    p.some_attribute = some_number
-
-  if player.id_in_group == 2:
-    do_something_else(p)
-    p.some_attribute = some_other_number
-  
-```
-
-## Calling players by id: `group.get_player_by_id()`
-
-* We can also add a condition in the loop
+## We can loop conditionally based on the id of the player
 
 ```{.python code-line-numbers="false"}
 # Gets all the players and puts them in a list
@@ -140,8 +97,22 @@ for p in players:
   if player.id_in_group == 2: # Trustee
     do_something_else(p)
     p.some_attribute = some_other_number
+  #...
   
 ```
+
+## Reaching player objects by id: `group.get_player_by_id()`
+
+
+  ```{.python code-line-numbers="false"}
+  trustor = group.get_player_by_id(1)
+  trustee = group.get_player_by_id(2)
+  
+  trustor.payoff = endowment - sent_amount + returned amount
+  trustee.payoff = C.MULTIPLIER * sent_amount - returned_amount
+  
+  
+  ```
 
 ## Dislaying pages conditionally for different roles
 - We already know how to display pages conditionally in different rounds.
@@ -166,8 +137,6 @@ class PageForTrustor(Page):
 - The trustee can send back any amount to the trustor.
 
 
-# Building a Public Goods Game
-
 ## Creating a new app
 1. `otree startapp trust`
 2. Add it to `settings.py`.
@@ -178,7 +147,7 @@ SESSION_CONFIGS = [
     dict(
         name='trust',
         app_sequence=['trust'],
-        num_demo_participants=3,
+        num_demo_participants=2,
     ),
 ]
 # ...
@@ -186,22 +155,33 @@ SESSION_CONFIGS = [
 ## Planning Pages
 | Page         | Description                   | Shown |
 | -------------| ----------------------------- |-------|
-| Send         | Send amount from P1 to P2     | P1    |
-| Return       | Return amount from P2 to P1   | P2    |
+| Send         | Amount sent from P1 to P2     | P1    |
+| Return       | Amount returned from P2 to P1   | P2    |
 | Results      | Show Results                  | Both  |
 
 . . .
 
 - What about WaitPages?
 
-# Pages
+## Planning Pages
 | Page         | Description                   | Shown |
 | -------------| ----------------------------- |-------|
-| Send         | Send amount from P1 to P2     | P1    |
+| Send         | Amount sent from P1 to P2     | P1    |
 | WaitForP1    |                               |       |
-| Return       | Return amount from P2 to P1   | P2    |
+| Return       | Amount returned from P2 to P1   | P2    |
 | WaitForP2    |                               |       |
 | Results      | Show Results                  | Both  |
+
+## Group fields
+
+- We already know how to create group fields.
+- We can also create forms for group fields.
+
+```{.python code-line-numbers="false"}
+class Send(Page):
+    form_fields = ['sent']
+    form_model = 'group'
+```
 
 ## Game Parameters{.smaller}
 | Parameter             | Description                           | Scope     | Field/Type       |
@@ -209,8 +189,8 @@ SESSION_CONFIGS = [
 | PLAYERS_PER_GROUP     | (built-in) Number of players in group | Constants |                  |
 | ENDOWMENT             | Initial endowment of P1               | Constants |`c()`   |
 | MULTIPLIER            | The multiplier of P1's transfer to P2 | Constants |                  |
-| sent_amount           | The amount sent by P1 to P2           | Group     | **CurrencyField** |
-| returned_amount       | The amount sent back by P2 to P1      | Group     | **CurrencyField** |
+| sent           | The amount sent by P1 to P2           | Group     | **CurrencyField** |
+| returned       | The amount sent back by P2 to P1      | Group     | **CurrencyField** |
 | payoff                | Payoff of each player (built-in)     | Player     | **CurrencyField** |
 
 . . .  
@@ -228,8 +208,8 @@ def set_payoffs(group):
     p1 = group.get_player_by_id(1)
     p2 = group.get_player_by_id(2)
 
-    p1.payoff = C.ENDOWMENT - group.sent_amount + group.returned_amount
-    p2.payoff = group.sent_amount * C.MULTIPLIER - group.returned_amount
+    p1.payoff = C.ENDOWMENT - group.sent + group.returned
+    p2.payoff = group.sent * C.MULTIPLIER - group.returned
 ```
 
 ## Using Experimental Currencies
@@ -238,6 +218,9 @@ def set_payoffs(group):
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
+
+## this you should add manually
+POINTS_CUSTOM_NAME = 'ECU'
 ```
 
 ## Triggering `set_payoffs`

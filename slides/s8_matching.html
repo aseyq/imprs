@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Ali Seyhun Saral (Institute for Advanced Study in Toulouse)">
-  <meta name="dcterms.date" content="2023-08-08">
+  <meta name="dcterms.date" content="2023-08-09">
   <title>oTree Crash Course</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -392,7 +392,7 @@
 
 <section id="title-slide" data-background-image="images/fishmarket.jpg" data-background-size="cover" class="quarto-title-block center">
   <h1 class="title">oTree Crash Course</h1>
-  <p class="subtitle">Session VIII - Matching</p>
+  <p class="subtitle">Session X - Matching</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -405,7 +405,7 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
     </div>
 </div>
 
-  <p class="date">2023-08-08</p>
+  <p class="date">2023-08-09</p>
 </section>
 <section id="multiple-rounds" class="slide level2">
 <h2>Multiple Rounds</h2>
@@ -431,7 +431,7 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <section id="variables-when-there-are-multiple-rounds" class="slide level2 smaller">
 <h2>Variables when there are multiple rounds</h2>
 <div class="center">
-<p><img data-src="images/rounds.png" style="width:40.0%"></p>
+<p><img data-src="images/rounds.png" style="width:50.0%"></p>
 </div>
 <ul>
 <li><p>For each round, there will be a separate <code>player</code> object for each participant and a <code>group</code> object for each group.</p></li>
@@ -651,15 +651,20 @@ Ali Seyhun Saral (Institute for Advanced Study in Toulouse)
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_next_page(player, timeout_happened):</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> timeout_happened:</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            player.timed_out <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> app_after_this_page(player, upcoming_apps):</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> player.timed_out:</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"timeout"</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_next_page(player, timeout_happened):</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> timeout_happened:</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            player.timed_out <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>            player.timed_out <span class="op">=</span> <span class="va">True</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="then-you-can-send-the-participant-to-another-app" class="slide level2">
+<h2>Then you can send the participant to another app</h2>
+<div class="sourceCode" id="cb15" data-code-line-numbers="false"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Consent(Page):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    timeout_seconds <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> before_next_page(player, timeout_happened):</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> timeout_happened:</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            player.timed_out <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> app_after_this_page(player, upcoming_apps):</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> player.timed_out:</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="st">"timeout"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer footer-default">
 
 </div>
